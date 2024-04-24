@@ -1,0 +1,50 @@
+Nom du rapport : Rapport DJEROUA MUSTAPHA HACENE 12105968 - PROJET Système & Réseaux
+
+Statut du projet : dans les délais.
+
+La description des fonctionnalités mises en oeuvre : 
+
+** Dans le fichier comptines_utils.c:  
+
+-La fonction read_until_nl lit un fichier caractère par caractère jusqu'à ce qu'elle rencontre un saut de ligne ('\n') et stocke les caractères lus dans un tampon (buf). Elle renvoie le nombre de caractères lus, moins un pour exclure le saut de ligne.
+
+-La fonction est_nom_fichier_comptine vérifie si un nom de fichier se termine par l'extension ".cpt". Elle renvoie 1 si c'est le cas, sinon 0.
+
+-La fonction init_cpt_depuis_fichier initialise une structure comptine à partir d'un fichier spécifié par un répertoire (dir_name) et un nom de base de fichier (base_name). Elle ouvre le fichier, lit le titre de la comptine jusqu'au saut de ligne et l'assigne à la structure comptine. Elle renvoie la structure comptine initialisée.
+
+-La fonction liberer_comptine libère la mémoire allouée pour une structure comptine.
+
+-La fonction creer_catalogue crée un catalogue de comptines à partir d'un répertoire spécifié (dir_name). Elle compte d'abord le nombre de fichiers de comptines dans le répertoire, puis alloue la mémoire pour le catalogue et son tableau de pointeurs de comptines. Ensuite, elle parcourt à nouveau le répertoire, initialise les comptines à partir des fichiers et les ajoute au tableau du catalogue. Elle renvoie le catalogue créé.
+
+-La fonction liberer_catalogue libère la mémoire allouée pour un catalogue de comptines, y compris les structures de comptines qu'il contient.
+
+** Dans le fichier wcp_clt.c : 
+
+-Une fonction "creer_connecter_sock" est définie pour créer et connecter une socket TCP/IPv4 au serveur distant.
+-Une fonction "recevoir_liste_comptines" est définie pour lire la liste numérotée des comptines du descripteur de fichier et les afficher sur le terminal.
+-Une fonction "saisir_num_comptine" est définie pour demander à l'utilisateur de saisir un numéro de comptine.
+-Une fonction "envoyer_num_comptine" est définie pour envoyer le numéro de comptine au serveur distant.
+-Une fonction "afficher_comptine" est définie pour afficher la comptine reçue du serveur sur le terminal.
+-La fonction principale "main" s'exécute comme suit :
+	a. Une socket est créée et connectée au serveur distant.
+	b. La liste des comptines est reçue et affichée.
+	c. L'utilisateur saisit un numéro de comptine.
+	d. Le numéro de comptine est envoyé au serveur distant.
+	e. La comptine est affichée sur le terminal.
+	f. La socket est fermée.
+
+** Dans le fichier wcp_srv.c :
+
+-La fonction creer_configurer_sock_ecoute() crée une socket d'écoute et l'attache au port spécifié.
+-La fonction envoyer_liste() envoie la liste des comptines présentes dans le répertoire spécifié, conformément au protocole WCP.
+-La fonction recevoir_num_comptine() lit un entier envoyé via la socket et le convertit en format machine.
+-La fonction envoyer_comptine() envoie la comptine demandée via la socket, en lisant le fichier correspondant dans le répertoire spécifié.
+-Dans la fonction main(), le programme crée une socket d'écoute, attend une connexion et effectue les étapes suivantes :
+ 	a. Envoie la liste des comptines disponibles au client connecté.
+	b. Attend la réception d'un numéro de comptine.
+	c. Envoie la comptine demandée au client.
+	d .Ferme la connexion avec le client.
+
+Ressources Externes : 
+https://stackoverflow.com
+https://koor.fr
